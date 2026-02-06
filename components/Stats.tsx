@@ -26,11 +26,11 @@ const Stats: React.FC = () => {
                   {stat.label}
                 </p>
 
-                {/* Decorative progress bar - Fixed widths for professional stability */}
+                {/* Decorative progress bar - Uniform width for qualitative stats */}
                 <div className="w-full h-1 bg-slate-800 mt-6 overflow-hidden">
                   <div 
                     className="h-full bg-cyan-500 animate-[pulse_3s_ease-in-out_infinite]" 
-                    style={{ width: index === 0 ? '75%' : index === 1 ? '98%' : '100%', animationDelay: `${index * 0.2}s` }}
+                    style={{ width: '100%', animationDelay: `${index * 0.2}s` }}
                   ></div>
                 </div>
               </div>

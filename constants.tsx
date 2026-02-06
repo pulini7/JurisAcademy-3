@@ -9,9 +9,9 @@ export const NAV_ITEMS: NavItem[] = [
 ];
 
 export const STATS: StatItem[] = [
-  { value: '14,200h', label: 'HORAS RECAPTURADAS', trend: '+12% M/M' },
-  { value: '98.5%', label: 'PRECISÃO SINTÁTICA', trend: 'OTIMIZADO' },
-  { value: 'R$ 4.2M', label: 'ECONOMIA GERADA', trend: 'TOTAL ACUMULADO' },
+  { value: '10x', label: 'VELOCIDADE NA ESCRITA', trend: 'PRODUTIVIDADE' },
+  { value: '100%', label: 'CONTROLE ANTI-ALUCINAÇÃO', trend: 'SEGURANÇA' },
+  { value: 'ZERO', label: 'NECESSIDADE DE CÓDIGO', trend: 'ACESSIBILIDADE' },
 ];
 
 export const COURSES: CourseLevel[] = [

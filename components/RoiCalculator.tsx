@@ -22,7 +22,7 @@ const RoiCalculator: React.FC = () => {
   const savedMoney = data[0].cost - data[1].cost;
 
   return (
-    <section className="py-20 bg-slate-900 border-t border-slate-800">
+    <section className="py-16 bg-slate-900 border-t border-slate-800">
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-white mb-2">CALCULADORA DE ROI</h2>

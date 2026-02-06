@@ -4,7 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="https://picsum.photos/32/32" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO & Meta Tags -->
     <title>JurisAcademy | Algoritmize sua Advocacia</title>
+    <meta name="description" content="A primeira escola de Engenharia de Prompts para Advogados. Domine IA, automatize petições e aumente sua lucratividade com a JurisAcademy." />
+    <meta name="keywords" content="Direito, IA, ChatGPT para Advogados, Automação Jurídica, Curso Direito" />
+    <meta name="author" content="JurisAcademy" />
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jurisacademy.com/" />
+    <meta property="og:title" content="JurisAcademy | A Nova Era do Direito" />
+    <meta property="og:description" content="Transforme seu escritório em um Mainframe Jurídico. Aprenda a usar IA para reduzir 90% do tempo de peticionamento." />
+    <meta property="og:image" content="https://picsum.photos/1200/630" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://jurisacademy.com/" />
+    <meta property="twitter:title" content="JurisAcademy | Algoritmize sua Advocacia" />
+    <meta property="twitter:description" content="Domine a Inteligência Artificial aplicada ao Direito." />
+    <meta property="twitter:image" content="https://picsum.photos/1200/630" />
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,6 +66,8 @@
               'glitch': 'glitch 1s linear infinite',
               'float': 'float 6s ease-in-out infinite',
               'cursor': 'cursor .75s step-end infinite',
+              'fade-in-out': 'fadeInOut 3s ease-in-out infinite',
+              'grid-flow': 'gridMove 20s linear infinite',
             },
             keyframes: {
               scan: {
@@ -60,6 +81,14 @@
               cursor: {
                 '0%, 100%': { opacity: '1' },
                 '50%': { opacity: '0' },
+              },
+              fadeInOut: {
+                '0%, 100%': { opacity: '0' },
+                '50%': { opacity: '1' },
+              },
+              gridMove: {
+                '0%': { backgroundPosition: '0 0' },
+                '100%': { backgroundPosition: '40px 40px' },
               }
             }
           }

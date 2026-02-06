@@ -9,7 +9,7 @@ interface Log {
 const AiTerminal: React.FC = () => {
   const [input, setInput] = useState('');
   const [logs, setLogs] = useState<Log[]>([
-    { type: 'ai', content: 'JURIS_CORE v3.0 ONLINE. AGUARDANDO INPUT JURÍDICO...' }
+    { type: 'ai', content: 'JURIS CORE v3.0 ONLINE. AGUARDANDO INPUT JURÍDICO...' }
   ]);
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -36,12 +36,12 @@ const AiTerminal: React.FC = () => {
   };
 
   return (
-    <section id="consultant" className="py-24 bg-slate-950 relative overflow-hidden">
+    <section id="consultant" className="py-16 bg-slate-950 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-cyan-900/10 blur-3xl pointer-events-none"></div>
 
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-white mb-2">CONSULTOR <span className="text-cyan-400">JURIS_AI</span></h2>
+          <h2 className="text-3xl font-bold text-white mb-2">CONSULTOR <span className="text-cyan-400">JURIS AI</span></h2>
           <p className="text-slate-400 font-mono text-sm">Teste nossa API (Powered by Gemini)</p>
         </div>
 
@@ -51,7 +51,7 @@ const AiTerminal: React.FC = () => {
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            <span className="ml-2 text-slate-400 text-xs">user@juris_academy:~</span>
+            <span className="ml-2 text-slate-400 text-xs">usuario@juris-academy:~</span>
           </div>
 
           {/* Terminal Body */}

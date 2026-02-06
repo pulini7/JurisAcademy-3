@@ -30,6 +30,10 @@ const Testimonials: React.FC = () => {
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.name} 
+                    loading="lazy"
+                    decoding="async"
+                    width="48"
+                    height="48"
                     className="w-12 h-12 rounded-full border border-slate-600 grayscale group-hover:grayscale-0 transition-all"
                   />
                   <div>

@@ -5,13 +5,17 @@ interface RevealOnScrollProps {
   threshold?: number; // 0.0 to 1.0 - How much of the element must be visible
   delay?: number;     // Delay in ms before animation starts
   className?: string; // Additional classes
+  visibleClass?: string; // Class to apply when visible
+  hiddenClass?: string;  // Class to apply when hidden
 }
 
 const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ 
   children, 
   threshold = 0.1, 
   delay = 0,
-  className = "" 
+  className = "",
+  visibleClass = "opacity-100 translate-y-0",
+  hiddenClass = "opacity-0 translate-y-12"
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -43,10 +47,10 @@ const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out transform ${className} ${
+      className={`transition-all duration-1000 ease-out transform ${className} ${
         isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-12'
+          ? visibleClass 
+          : hiddenClass
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >

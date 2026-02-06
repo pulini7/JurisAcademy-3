@@ -16,9 +16,6 @@ const Navbar: React.FC = () => {
               <span className="font-sans text-xl font-bold text-white tracking-tighter leading-none">
                 JURIS<span className="text-cyan-400">ACADEMY</span>
               </span>
-              <span className="font-mono text-[0.6rem] text-slate-500 tracking-[0.2em]">
-                FORENSIC LAB
-              </span>
             </div>
           </div>
           

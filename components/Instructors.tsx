@@ -20,10 +20,14 @@ const Instructors: React.FC = () => {
             <RevealOnScroll key={index} delay={index * 150}>
               <div className="group flex flex-col items-center text-center">
                 <div className="relative w-48 h-48 mb-6 rounded-full overflow-hidden border-2 border-slate-700 group-hover:border-cyan-500 transition-colors duration-500 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-                  {/* Image: Grayscale by default, color on group hover */}
+                  {/* Image: Optimized with lazy loading */}
                   <img 
                     src={instructor.image} 
                     alt={instructor.name}
+                    loading="lazy"
+                    decoding="async"
+                    width="192"
+                    height="192"
                     className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>

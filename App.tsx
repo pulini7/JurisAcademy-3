@@ -1,43 +1,95 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Stats from './components/Stats';
-import NeuralDrafting from './components/NeuralDrafting';
-import Features from './components/Features';
-import TransformationPath from './components/TransformationPath';
-import RoiCalculator from './components/RoiCalculator';
-import Pricing from './components/Pricing';
-import Footer from './components/Footer';
-import Fundamentals from './components/Fundamentals';
-import Comparison from './components/Comparison';
-import Instructors from './components/Instructors';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
+import ScrollProgress from './components/ScrollProgress';
+
+// Critical Path Components (Loaded Immediately)
+// Navbar, Hero, and ScrollProgress are essential for the First Contentful Paint.
+
+// Lazy Loaded Components (Loaded only when needed/idle)
+// This splits the code into smaller chunks, preventing the browser from downloading
+// heavy libraries (like Recharts in RoiCalculator) until necessary.
+const Stats = React.lazy(() => import('./components/Stats'));
+const Fundamentals = React.lazy(() => import('./components/Fundamentals'));
+const Features = React.lazy(() => import('./components/Features'));
+const TransformationPath = React.lazy(() => import('./components/TransformationPath'));
+const NeuralDrafting = React.lazy(() => import('./components/NeuralDrafting'));
+const RoiCalculator = React.lazy(() => import('./components/RoiCalculator'));
+const Testimonials = React.lazy(() => import('./components/Testimonials'));
+const Comparison = React.lazy(() => import('./components/Comparison'));
+const Pricing = React.lazy(() => import('./components/Pricing'));
+const FAQ = React.lazy(() => import('./components/FAQ'));
+const Instructors = React.lazy(() => import('./components/Instructors'));
+const Footer = React.lazy(() => import('./components/Footer'));
+
+// Simple Loading Fallback to prevent layout thrashing
+const SectionLoader = () => (
+  <div className="py-20 flex justify-center items-center bg-slate-950">
+    <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
+  </div>
+);
 
 const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-cyan-500/30 selection:text-cyan-200 relative">
+      <ScrollProgress />
       <Navbar />
       <Hero />
-      <Stats />
-      <Fundamentals />
-      <Features />
-      <TransformationPath />
-      <NeuralDrafting />
-      <RoiCalculator />
-      <Testimonials />
-      <Comparison />
-      <Pricing />
-      <FAQ />
-      <Instructors />
-      <Footer />
       
-      {/* WhatsApp Floating Button */}
+      <Suspense fallback={<SectionLoader />}>
+        <Stats />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <Fundamentals />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <Features />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <TransformationPath />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <NeuralDrafting />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <RoiCalculator />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <Testimonials />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <Comparison />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <Pricing />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <FAQ />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <Instructors />
+      </Suspense>
+      
+      <Suspense fallback={<SectionLoader />}>
+        <Footer />
+      </Suspense>
+      
+      {/* WhatsApp Floating Button - Loaded last logically, though renders fixed */}
       <a 
         href="https://wa.me/5514997912815" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20b858] text-white p-3.5 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.8)] hover:scale-110 transition-all duration-300 group"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20b858] text-white p-3.5 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_30px_rgba(37,211,102,0.8)] hover:scale-110 transition-all duration-300 group will-change-transform"
         aria-label="Fale conosco no WhatsApp"
       >
         <div className="absolute inset-0 rounded-full border border-white/30 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] opacity-50"></div>

@@ -172,13 +172,6 @@ const NeuralDrafting: React.FC = () => {
                   )}
                 </div>
               </div>
-              
-              {/* Context Label (Bottom) */}
-              <div className="absolute -bottom-8 right-0 text-right">
-                  <p className="font-mono text-[10px] text-slate-600 uppercase">
-                      OUTPUT GERADO PELO ALUNO
-                  </p>
-              </div>
             </RevealOnScroll>
           </div>
 

@@ -36,10 +36,6 @@ const Fundamentals: React.FC = () => {
             {/* Scanline animation overlay */}
             <div className="absolute inset-0 bg-scanline bg-scanline-sm opacity-10 animate-scan pointer-events-none"></div>
           </div>
-          
-          <p className="mt-8 text-slate-400 max-w-2xl mx-auto font-mono text-sm">
-            {'>'} Acesso restrito a operadores do direito. Descriptografando metodologia...
-          </p>
         </RevealOnScroll>
       </div>
     </section>

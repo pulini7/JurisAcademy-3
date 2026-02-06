@@ -103,7 +103,7 @@ const Hero: React.FC = () => {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <button className="w-full sm:w-auto px-10 py-4 bg-white text-slate-950 font-mono font-black tracking-wider hover:bg-cyan-50 transition-all duration-300 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:scale-105 hover:shadow-[0_0_35px_rgba(34,211,238,0.8)]">
+          <button className="w-full sm:w-auto px-10 py-4 bg-white text-slate-950 font-mono font-black tracking-wider hover:bg-cyan-neon hover:text-white transition-all duration-300 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:scale-105 hover:shadow-[0_0_35px_rgba(34,211,238,0.8)] hover:animate-glitch">
             INICIAR AGORA
           </button>
           

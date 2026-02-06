@@ -101,24 +101,24 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-center flex flex-col items-center">
         
-        {/* Main Title - Immediate Load with Staggered Focus Effect */}
-        <h1 className="flex flex-col items-center justify-center font-black tracking-tighter text-center leading-[0.85] mb-8 select-none">
+        {/* Main Title - Immediate Load with Staggered Focus & Interactive Glitch */}
+        <h1 className="flex flex-col items-center justify-center font-black tracking-tighter text-center leading-[0.85] mb-8 select-none group/title">
           <span 
-            className={`text-6xl md:text-8xl lg:text-9xl text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] transform transition-all duration-1000 delay-100 ease-out ${
+            className={`text-6xl md:text-8xl lg:text-9xl text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] transform transition-all duration-1000 delay-100 ease-out hover:text-cyan-400 hover:animate-glitch cursor-default ${
               isMounted ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'
             }`}
           >
             ALGORITMIZE
           </span>
           <span 
-             className={`text-6xl md:text-8xl lg:text-9xl text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] transform transition-all duration-1000 delay-200 ease-out ${
+             className={`text-6xl md:text-8xl lg:text-9xl text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] transform transition-all duration-1000 delay-200 ease-out hover:text-cyan-400 hover:animate-glitch cursor-default ${
               isMounted ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'
             }`}
           >
             SUA
           </span>
           <span 
-             className={`text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 pb-2 text-glow transform transition-all duration-1000 delay-300 ease-out ${
+             className={`text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 pb-2 text-glow transform transition-all duration-1000 delay-300 ease-out hover:animate-glitch cursor-default ${
               isMounted ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'
             }`}
           >
@@ -146,7 +146,7 @@ const Hero: React.FC = () => {
         >
           <p className="text-slate-300 mb-12 text-lg md:text-xl leading-relaxed font-light">
             Deixe de ser um digitador de luxo e torne-se um{" "}
-            <span className="text-white font-bold border-b-2 border-cyan-400 pb-0.5 shadow-[0_2px_10px_rgba(34,211,238,0.1)]">
+            <span className="text-white font-bold border-b-2 border-cyan-400 pb-0.5 shadow-[0_2px_10px_rgba(34,211,238,0.1)] hover:text-cyan-400 transition-colors cursor-pointer">
               Engenheiro Jurídico
             </span>.
             Domine a Inteligência Artificial para processar em minutos o que antes levava semanas de esforço manual.
@@ -157,16 +157,16 @@ const Hero: React.FC = () => {
         <RevealOnScroll delay={900}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button className="group relative w-full sm:w-auto px-10 py-4 bg-white text-slate-950 font-mono font-black tracking-wider transition-all duration-300 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:scale-105 hover:shadow-[0_0_50px_rgba(34,211,238,0.6)] overflow-hidden">
-              <span className="relative z-10 flex items-center justify-center gap-2">
+              <span className="relative z-10 flex items-center justify-center gap-2 group-hover:text-white transition-colors duration-300">
                   INICIAR AGORA
                   <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
               </span>
-              <div className="absolute inset-0 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ease-out"></div>
+              <div className="absolute inset-0 bg-cyan-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ease-out"></div>
             </button>
             
-            <button className="w-full sm:w-auto px-10 py-4 border border-slate-700 text-slate-400 hover:text-white hover:border-cyan-500 hover:bg-slate-900/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] font-mono font-bold tracking-wider transition-all duration-300 rounded-full">
+            <button className="w-full sm:w-auto px-10 py-4 border border-slate-700 text-slate-400 hover:text-white hover:border-cyan-500 hover:bg-slate-900/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] font-mono font-bold tracking-wider transition-all duration-300 rounded-full backdrop-blur-sm">
               EXPLORAR STACK
             </button>
           </div>

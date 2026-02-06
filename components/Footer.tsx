@@ -6,15 +6,16 @@ const Footer: React.FC = () => {
     <footer className="bg-slate-950 border-t border-slate-900 pt-12 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <RevealOnScroll>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          {/* Layout changed to centered single column since newsletter was removed */}
+          <div className="flex flex-col items-center text-center mb-12">
             <div>
               <h3 className="text-2xl font-bold text-white mb-4 font-mono">
                 JURIS<span className="text-cyan-400"> ACADEMY</span>
               </h3>
-              <p className="text-slate-400 max-w-md mb-6">
+              <p className="text-slate-400 max-w-md mb-6 mx-auto">
                 A primeira escola de programação jurídica do Brasil. Transformamos advogados em engenheiros de prompts.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 justify-center">
                 {/* LinkedIn */}
                 <a href="#" className="w-10 h-10 bg-slate-900 rounded flex items-center justify-center text-slate-500 hover:bg-cyan-600 hover:text-white transition-all cursor-pointer">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -29,26 +30,11 @@ const Footer: React.FC = () => {
                 </a>
               </div>
             </div>
-
-            <div className="bg-slate-900/50 p-8 border border-slate-800 rounded-lg">
-              <h4 className="text-white font-bold mb-4">NEWSLETTER CRIPTOGRAFADA</h4>
-              <p className="text-slate-400 text-sm mb-4">Receba hacks de prompts semanais.</p>
-              <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-                <input 
-                  type="email" 
-                  placeholder="seu@email.com" 
-                  className="flex-1 bg-slate-950 border border-slate-700 text-white px-4 py-2 outline-none focus:border-cyan-500 transition-colors"
-                />
-                <button className="bg-cyan-600 hover:bg-cyan-500 text-white px-6 font-mono font-bold text-sm">
-                  ASSINAR
-                </button>
-              </form>
-            </div>
           </div>
 
           <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-600 text-sm font-mono">
             <div className="mb-4 md:mb-0">
-               <p>&copy; 2024 JURIS ACADEMY. TODOS OS DIREITOS RESERVADOS.</p>
+               <p>&copy; 2026 JURIS ACADEMY. TODOS OS DIREITOS RESERVADOS.</p>
                <div className="flex gap-4 mt-2 opacity-50">
                   {/* Generic Payment Icons (SVGs) for Trust */}
                   <svg className="h-6 w-auto text-slate-400" viewBox="0 0 38 24" fill="currentColor">

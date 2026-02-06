@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import RevealOnScroll from './RevealOnScroll';
 
 const TYPEWRITER_TEXTS = [
-  ":: SISTEMA OPERACIONAL LEGAL V3.0 ONLINE ::",
-  ":: ANALISE PREDITIVA DE SENTENCAS ATIVADA ::",
-  ":: REDE NEURAL JURIDICA CONECTADA ::",
-  ":: PROTOCOLO DE SEGURANCA MAXIMA ::"
+  ":: ENGENHARIA DE PROMPT JURÍDICO ::",
+  ":: AUTOMAÇÃO DE PEÇAS EM SEGUNDOS ::",
+  ":: ELIMINE O TRABALHO REPETITIVO ::",
+  ":: DOMINE O CHATGPT E O GEMINI ::"
 ];
 
 const Hero: React.FC = () => {
@@ -101,19 +101,6 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-center flex flex-col items-center">
         
-        {/* Badge - Immediate Load */}
-        <div 
-          className={`transform transition-all duration-700 ease-out ${
-            isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
-        >
-          <div className="inline-flex items-center px-6 py-3 rounded-lg border border-slate-800 bg-slate-950/80 backdrop-blur-sm mb-12 font-mono shadow-2xl">
-            <span className="text-slate-600 mr-4 text-lg tracking-tighter">{'>>'}</span>
-            <span className="text-cyan-400 font-bold tracking-[0.2em] text-sm md:text-base uppercase">ESCALA JURIS</span>
-            <span className="w-2.5 h-5 bg-cyan-500 ml-1 animate-pulse shadow-[0_0_10px_#22d3ee]"></span>
-          </div>
-        </div>
-
         {/* Main Title - Immediate Load with Staggered Focus Effect */}
         <h1 className="flex flex-col items-center justify-center font-black tracking-tighter text-center leading-[0.85] mb-8 select-none">
           <span 

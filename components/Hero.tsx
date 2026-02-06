@@ -13,12 +13,6 @@ const Hero: React.FC = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isMounted, setIsMounted] = useState(false); // State for immediate load animation
-
-  // Trigger animations immediately upon mount (faster than IntersectionObserver)
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     const currentFullText = TYPEWRITER_TEXTS[textIndex];
@@ -101,60 +95,46 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-center flex flex-col items-center">
         
-        {/* Main Title - Immediate Load with Staggered Focus & Interactive Glitch */}
-        <h1 className="flex flex-col items-center justify-center font-black tracking-tighter text-center leading-[0.85] mb-8 select-none group/title">
-          <span 
-            className={`text-6xl md:text-8xl lg:text-9xl text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] transform transition-all duration-1000 delay-100 ease-out hover:text-cyan-400 hover:animate-glitch cursor-default ${
-              isMounted ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'
-            }`}
-          >
-            ALGORITMIZE
-          </span>
-          <span 
-             className={`text-6xl md:text-8xl lg:text-9xl text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] transform transition-all duration-1000 delay-200 ease-out hover:text-cyan-400 hover:animate-glitch cursor-default ${
-              isMounted ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'
-            }`}
-          >
-            SUA
-          </span>
-          <span 
-             className={`text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 pb-2 text-glow transform transition-all duration-1000 delay-300 ease-out hover:animate-glitch cursor-default ${
-              isMounted ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'
-            }`}
-          >
-            ADVOCACIA.
-          </span>
-        </h1>
+        {/* Main Title - Standardized RevealOnScroll Animation */}
+        <RevealOnScroll>
+          <h1 className="flex flex-col items-center justify-center font-black tracking-tighter text-center leading-[0.85] mb-8 select-none group/title">
+            <span className="text-6xl md:text-8xl lg:text-9xl text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:text-cyan-400 transition-colors duration-500 cursor-default">
+              ALGORITMIZE
+            </span>
+            <span className="text-6xl md:text-8xl lg:text-9xl text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:text-cyan-400 transition-colors duration-500 cursor-default">
+              SUA
+            </span>
+            <span className="text-6xl md:text-8xl lg:text-9xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 pb-2 text-glow cursor-default">
+              ADVOCACIA.
+            </span>
+          </h1>
+        </RevealOnScroll>
 
-        {/* Dynamic Typewriter Text - Immediate Load */}
-        <div 
-          className={`h-8 mb-8 flex items-center justify-center transform transition-opacity duration-700 delay-500 ${
-            isMounted ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-            <p className="font-mono font-bold text-cyan-400 text-sm md:text-base tracking-[0.2em] text-center drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">
-                {displayText}
-                <span className="animate-pulse inline-block w-2.5 h-5 bg-cyan-400 ml-2 align-middle shadow-[0_0_10px_#22d3ee]"></span>
+        {/* Dynamic Typewriter Text - Standardized RevealOnScroll Animation */}
+        <RevealOnScroll delay={200}>
+          <div className="h-8 mb-8 flex items-center justify-center">
+              <p className="font-mono font-bold text-cyan-400 text-sm md:text-base tracking-[0.2em] text-center drop-shadow-[0_0_5px_rgba(34,211,238,0.5)]">
+                  {displayText}
+                  <span className="animate-pulse inline-block w-2.5 h-5 bg-cyan-400 ml-2 align-middle shadow-[0_0_10px_#22d3ee]"></span>
+              </p>
+          </div>
+        </RevealOnScroll>
+
+        {/* Subtitle - Standardized RevealOnScroll Animation */}
+        <RevealOnScroll delay={400}>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-slate-300 mb-12 text-lg md:text-xl leading-relaxed font-light">
+              Deixe de ser um digitador de luxo e torne-se um{" "}
+              <span className="text-white font-bold border-b-2 border-cyan-400 pb-0.5 shadow-[0_2px_10px_rgba(34,211,238,0.1)] hover:text-cyan-400 transition-colors cursor-pointer">
+                Engenheiro Jurídico
+              </span>.
+              Domine a Inteligência Artificial para processar em minutos o que antes levava semanas de esforço manual.
             </p>
-        </div>
+          </div>
+        </RevealOnScroll>
 
-        {/* Subtitle - Still deferred slightly for visual hierarchy */}
-        <div 
-          className={`max-w-3xl mx-auto transform transition-all duration-1000 delay-700 ease-out ${
-            isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <p className="text-slate-300 mb-12 text-lg md:text-xl leading-relaxed font-light">
-            Deixe de ser um digitador de luxo e torne-se um{" "}
-            <span className="text-white font-bold border-b-2 border-cyan-400 pb-0.5 shadow-[0_2px_10px_rgba(34,211,238,0.1)] hover:text-cyan-400 transition-colors cursor-pointer">
-              Engenheiro Jurídico
-            </span>.
-            Domine a Inteligência Artificial para processar em minutos o que antes levava semanas de esforço manual.
-          </p>
-        </div>
-
-        {/* Buttons - Keep RevealOnScroll for bottom elements or use delay */}
-        <RevealOnScroll delay={900}>
+        {/* Buttons - Standardized RevealOnScroll Animation */}
+        <RevealOnScroll delay={600}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button className="group relative w-full sm:w-auto px-10 py-4 bg-white text-slate-950 font-mono font-black tracking-wider transition-all duration-300 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:scale-105 hover:shadow-[0_0_50px_rgba(34,211,238,0.6)] overflow-hidden">
               <span className="relative z-10 flex items-center justify-center gap-2 group-hover:text-white transition-colors duration-300">

@@ -110,7 +110,7 @@ const NeuralDrafting: React.FC = () => {
                               <div className="pl-4 border-l-2 border-slate-300 my-4">
                                   <p className="font-serif text-[10px] sm:text-xs font-bold text-slate-900 mb-1">I - DOS FATOS</p>
                                   <p className="font-serif text-[9px] sm:text-[11px] text-justify leading-relaxed text-slate-600">
-                                      Em 10/01/2024, o Autor adquiriu veículo zero km por R$ 120.000,00. Decorridos apenas 03 dias, o automóvel apresentou falha crítica (motor ferveu), deixando a família em situação de risco na rodovia por 4 horas. A Ré recusou a troca imediata, alegando "mau uso".
+                                      Em 10/01/2026, o Autor adquiriu veículo zero km por R$ 120.000,00. Decorridos apenas 03 dias, o automóvel apresentou falha crítica (motor ferveu), deixando a família em situação de risco na rodovia por 4 horas. A Ré recusou a troca imediata, alegando "mau uso".
                                   </p>
                               </div>
 
@@ -132,7 +132,7 @@ const NeuralDrafting: React.FC = () => {
                               
                               <div className="mt-8 pt-4 text-center">
                                   <p className="font-serif text-[10px] text-slate-800">Termos em que, Pede deferimento.</p>
-                                  <p className="font-serif text-[10px] text-slate-800 mt-1">São Paulo, 12 de Fevereiro de 2024.</p>
+                                  <p className="font-serif text-[10px] text-slate-800 mt-1">São Paulo, 12 de Fevereiro de 2026.</p>
                                   <div className="mt-4 border-t border-black w-32 mx-auto pt-1">
                                       <p className="font-serif text-[9px] font-bold">DR. JOÃO VITOR</p>
                                   </div>

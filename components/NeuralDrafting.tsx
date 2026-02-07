@@ -210,21 +210,19 @@ const NeuralDrafting: React.FC = () => {
   const startSimulation = () => {
     if (status !== 'IDLE' && status !== 'COMPLETED') return;
     
-    // Pick a random scenario ensuring it's not the exact same as visually displayed (optional polish, but simple random is fine)
+    // Pick a random scenario
     const randomIndex = Math.floor(Math.random() * LEGAL_SCENARIOS.length);
     const scenario = LEGAL_SCENARIOS[randomIndex];
 
     setStatus('APPLYING_METHOD');
     setCurrentText(scenario.bad);
-    setTargetText(scenario.good); // Set the target for the generation phase
-    setCurrentFilename(scenario.filename.replace('.docx', '_draft.txt')); // Initial drafts are .txt
+    setTargetText(scenario.good);
+    setCurrentFilename(scenario.filename.replace('.docx', '_draft.txt'));
 
-    // Phase 1: Applying Methodology (Simulating prompt injection)
+    // Phase 1: Applying Methodology
     let cycles = 0;
     processingRef.current = setInterval(() => {
       cycles++;
-      
-      // Glitch effect implies the "transformation" happening via prompt
       if (Math.random() > 0.5) {
         const glitchChars = '█▓▒░<>/{}[]';
         const pos = Math.floor(Math.random() * scenario.bad.length);
@@ -242,11 +240,9 @@ const NeuralDrafting: React.FC = () => {
   const startGeneration = (scenario: LegalScenario) => {
     setStatus('GENERATING');
     setCurrentText('');
-    setCurrentFilename(scenario.filename); // Switch to .docx for final output
+    setCurrentFilename(scenario.filename);
     
     let charIndex = 0;
-    
-    // Phase 2: Generating (The result of the method)
     typingRef.current = setInterval(() => {
       if (charIndex < scenario.good.length) {
         setCurrentText(scenario.good.substring(0, charIndex + 1));
@@ -255,7 +251,7 @@ const NeuralDrafting: React.FC = () => {
         if (typingRef.current) clearInterval(typingRef.current);
         setStatus('COMPLETED');
       }
-    }, 10); // Slightly faster typing for better UX with longer texts
+    }, 10);
   };
 
   return (
@@ -266,7 +262,7 @@ const NeuralDrafting: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center gap-16">
           
-          {/* Text Content - Focus on Method */}
+          {/* Text Content */}
           <div className="w-full md:w-1/2">
             <RevealOnScroll>
               <div className="inline-block px-3 py-1 mb-4 text-[10px] font-mono font-bold text-cyan-400 border border-cyan-900 bg-cyan-900/10 rounded uppercase tracking-widest">
@@ -312,57 +308,120 @@ const NeuralDrafting: React.FC = () => {
             </RevealOnScroll>
           </div>
 
-          {/* Terminal / Editor Window */}
+          {/* New Editor Window UI - Microsoft Word Style */}
           <div className="w-full md:w-1/2 relative group">
             <RevealOnScroll delay={200}>
-               {/* Glowing border effect */}
-               <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-               
-               {/* Main Window */}
-              <div className="relative bg-slate-950 border border-slate-800 rounded-lg shadow-2xl overflow-hidden">
-                
-                {/* Window Header */}
-                <div className="flex items-center justify-between px-4 py-3 bg-slate-900/80 border-b border-slate-800">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-                  </div>
-                  <div className="font-mono text-[10px] text-slate-500 uppercase tracking-widest truncate max-w-[200px]">
-                    {currentFilename}
-                  </div>
-                  <div className="w-8"></div> {/* Spacer for centering */}
-                </div>
-
-                {/* Editor Content */}
-                <div className="p-6 font-mono text-sm min-h-[350px] bg-slate-950/90 relative">
+               <div className="relative rounded-lg overflow-hidden bg-[#e3e3e3] border border-slate-700 shadow-[0_0_50px_rgba(0,0,0,0.5)] transform transition-transform duration-500 hover:scale-[1.02]">
                   
-                  {/* Cyan Corner Brackets (As in image) */}
-                  <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-cyan-500"></div>
-                  <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-cyan-500"></div>
-
-                  {/* Text Area */}
-                  <div className={`transition-all duration-300 whitespace-pre-wrap leading-relaxed
-                    ${status === 'APPLYING_METHOD' ? 'text-cyan-600 opacity-50 blur-[1px]' : ''}
-                    ${status === 'GENERATING' || status === 'COMPLETED' ? 'text-cyan-50' : 'text-slate-500'}
-                  `}>
-                     {currentText}
-                     {(status === 'GENERATING') && (
-                       <span className="inline-block w-2.5 h-5 bg-cyan-500 ml-1 animate-pulse align-middle shadow-[0_0_8px_#22d3ee]"></span>
-                     )}
+                  {/* Word Blue Title Bar */}
+                  <div className="bg-[#2b579a] text-white px-4 py-2 flex justify-between items-center text-xs select-none">
+                     <div className="flex gap-4 items-center">
+                        <div className="flex gap-2 text-[10px] opacity-80">
+                           <div className="w-3 h-3 bg-white/20 rounded-full flex items-center justify-center">💾</div>
+                           <div className="w-3 h-3 bg-white/20 rounded-full flex items-center justify-center">↩️</div>
+                        </div>
+                        <span className="opacity-50">|</span>
+                        <span className="font-semibold tracking-wide">Documento1 - Word</span>
+                     </div>
+                     <div className="flex gap-3 items-center opacity-80">
+                         <span className="hover:bg-white/10 px-2 py-0.5 rounded cursor-pointer">_</span>
+                         <span className="hover:bg-white/10 px-2 py-0.5 rounded cursor-pointer">□</span>
+                         <span className="hover:bg-red-500 px-2 py-0.5 rounded cursor-pointer">✕</span>
+                     </div>
                   </div>
 
-                  {/* Status Overlay */}
-                  {status === 'APPLYING_METHOD' && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-slate-950/20 backdrop-blur-[1px]">
-                       <div className="bg-slate-900 border border-cyan-500/30 px-4 py-2 rounded text-cyan-400 font-mono text-xs shadow-lg flex items-center gap-3">
-                          <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
-                          INJETANDO CONTEXTO JURÍDICO...
-                       </div>
-                    </div>
-                  )}
-                </div>
-              </div>
+                  {/* Ribbon / Menu Bar */}
+                  <div className="bg-white border-b border-gray-300 text-slate-800">
+                     {/* Menu Tabs */}
+                     <div className="flex px-4 py-1 gap-4 text-[11px] text-slate-600 border-b border-gray-200">
+                        <span className="text-[#2b579a] font-bold border-b-2 border-[#2b579a] -mb-1.5 pb-1">Página Inicial</span>
+                        <span>Inserir</span>
+                        <span>Design</span>
+                        <span>Layout</span>
+                        <span>Referências</span>
+                     </div>
+                     
+                     {/* Toolbar Buttons */}
+                     <div className="px-4 py-2 flex items-center gap-4 h-12">
+                        {/* Font Family Box */}
+                        <div className="flex items-center gap-1 border border-gray-200 rounded px-1.5 py-0.5 bg-gray-50 h-7 w-32 justify-between cursor-default">
+                           <span className="text-[11px] font-sans">Times New Roman</span>
+                           <svg className="w-3 h-3 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                        </div>
+                         {/* Font Size */}
+                        <div className="flex items-center gap-1 border border-gray-200 rounded px-1.5 py-0.5 bg-gray-50 h-7 w-12 justify-between cursor-default">
+                           <span className="text-[11px]">12</span>
+                           <svg className="w-3 h-3 text-gray-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                        </div>
+
+                        <div className="w-px h-6 bg-gray-300 mx-1"></div>
+
+                        {/* Bold/Italic/Underline */}
+                        <div className="flex items-center gap-1 text-slate-600">
+                           <div className="w-6 h-6 flex items-center justify-center hover:bg-gray-100 rounded font-bold font-serif cursor-pointer">N</div>
+                           <div className="w-6 h-6 flex items-center justify-center hover:bg-gray-100 rounded italic font-serif cursor-pointer">I</div>
+                           <div className="w-6 h-6 flex items-center justify-center hover:bg-gray-100 rounded underline font-serif cursor-pointer">S</div>
+                        </div>
+
+                        <div className="w-px h-6 bg-gray-300 mx-1"></div>
+
+                        {/* Alignment */}
+                         <div className="flex items-center gap-1 text-slate-500">
+                           <div className="w-6 h-6 flex items-center justify-center hover:bg-gray-100 rounded cursor-pointer">
+                              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h10M4 18h16" /></svg>
+                           </div>
+                           <div className="w-6 h-6 flex items-center justify-center hover:bg-gray-100 rounded cursor-pointer">
+                               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/* Document Workspace (Gray Background) */}
+                  <div className="bg-[#e3e3e3] p-6 h-[400px] overflow-y-auto custom-scrollbar shadow-inner relative">
+                      
+                      {/* The "Paper" */}
+                      <div className="bg-white max-w-full mx-auto shadow-xl min-h-[500px] p-8 md:p-10 relative transition-all duration-300">
+                         
+                         {/* Text Content */}
+                         <div className={`font-serif text-black text-sm md:text-base leading-[1.6] whitespace-pre-wrap
+                              ${status === 'APPLYING_METHOD' ? 'opacity-70 blur-[1px]' : ''}
+                         `}>
+                            {currentText}
+                            {status === 'GENERATING' && (
+                               <span className="inline-block w-px h-5 bg-black ml-0.5 animate-pulse align-middle"></span>
+                            )}
+                         </div>
+
+                         {/* AI Processing Overlay on Paper */}
+                         {status === 'APPLYING_METHOD' && (
+                           <div className="absolute inset-0 flex items-center justify-center bg-white/60 backdrop-blur-[1px] z-10">
+                              <div className="bg-[#2b579a] text-white px-4 py-2 rounded shadow-lg flex items-center gap-3 font-sans text-xs">
+                                 <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                                 Reescrevendo com Juris AI...
+                              </div>
+                           </div>
+                         )}
+
+                      </div>
+                  </div>
+
+                  {/* Status Footer */}
+                  <div className="bg-[#2b579a] border-t border-blue-800/30 px-3 py-1 flex justify-between items-center text-[10px] text-white/90 select-none font-sans">
+                     <div className="flex gap-4">
+                        <span>Página 1 de 1</span>
+                        <span>{currentText.split(' ').length} palavras</span>
+                        <span>Português (Brasil)</span>
+                     </div>
+                     <div className="flex items-center gap-3">
+                        <span className="uppercase">{status === 'IDLE' ? 'PRONTO' : 'PROCESSANDO'}</span>
+                        <div className="w-20 h-1.5 bg-blue-900/50 rounded-full overflow-hidden">
+                           <div className="h-full bg-white/50 w-[70%]"></div>
+                        </div>
+                        <span>+ 100% -</span>
+                     </div>
+                  </div>
+               </div>
             </RevealOnScroll>
           </div>
 
